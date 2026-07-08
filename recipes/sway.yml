@@ -13,3 +13,8 @@ modules:
     remove:
       packages:
         - sddm
+
+  - type: systemd
+    system:
+      enabled:
+        - greetd
