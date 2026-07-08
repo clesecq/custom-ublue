@@ -32,9 +32,9 @@ modules:
         # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-  - type: script
-    snippets:
-      - "ln -sf /usr/share/sway-systemd/95-system-keyboard-config.conf /etc/sway/config.d/95-system-keyboard-config.conf && ln -sf /usr/share/sway-systemd/95-xdg-desktop-autostart.conf /etc/sway/config.d/95-xdg-desktop-autostart.conf"
+
+  - from-file: sway.yml
+
   - type: default-flatpaks
     configurations:
       - notify: true # Send notification after install/uninstall is finished (true/false)
