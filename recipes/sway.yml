@@ -16,7 +16,7 @@ modules:
     system:
       enabled:
         - greetd
-        # use code for insensitive layout keybinding
+  # use code for insensitive layout keybinding
   - type: script
     snippets:
-      - "sed 's/bindsym/bindsym --to-code/' /etc/sway/config"
+      - "sed -i 's/bindsym/bindsym --to-code/' /etc/sway/config"
