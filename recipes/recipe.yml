@@ -16,7 +16,8 @@ modules:
   - type: dnf
     repos:
       copr:
-        - atim/starship
+        - name: atim/starship
+          chroot: fedora-44-x86_64
     install:
       packages:
         - micro
