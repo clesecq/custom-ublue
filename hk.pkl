@@ -1,0 +1,25 @@
+amends "package://github.com/jdx/hk/releases/download/v1.51.0/hk@1.51.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.51.0/hk@1.51.0#/Builtins.pkl"
+
+local linters = new Mapping<String, Step> {
+	["yamlfmt"] = Builtins.yamlfmt
+    ["bluebuild"] {
+         glob = List("recipes/**/*.yml", "recipes/**/*.yaml")
+         check = "bluebuild validate --all-errors ./recipes/recipe.yml"
+    }
+}
+
+hooks {
+    ["pre-commit"] {
+        fix = true
+        stash = "git"
+        steps = linters
+    }
+    ["fix"] {
+        fix = true
+        steps = linters
+    }
+    ["check"] {
+        steps = linters
+    }
+}

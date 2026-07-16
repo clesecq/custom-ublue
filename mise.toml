@@ -1,0 +1,11 @@
+[tools]
+hk = "latest"
+yamlfmt = "latest"
+
+[env]
+HK_MISE = 1
+
+
+[hooks]
+# Automatically install/update hooks when tools are installed
+postinstall = "hk install --mise"
