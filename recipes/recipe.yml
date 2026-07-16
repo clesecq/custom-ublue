@@ -1,18 +1,14 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-# image will be published to ghcr.io/<user>/<name>
-name: custom-ublue
-# description will be included in the image's metadata
+#
+name: personal-os
 description: This is my personal OS image.
-# the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/secureblue/sericea-main-hardened
-image-version: 44 # latest is also supported if you want new updates ASAP
-# module configuration, executed in order
-# you can include multiple instances of the same module
+image-version: 44
 modules:
   - type: files
     files:
       - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+        destination: /
   - type: dnf
     repos:
       copr:
@@ -24,6 +20,7 @@ modules:
         - starship
         - crun-krun
   - from-file: sway.yml
+  - from-file: thunderbolt.yml
   - type: default-flatpaks
     configurations:
       - notify: true # Send notification after install/uninstall is finished (true/false)
