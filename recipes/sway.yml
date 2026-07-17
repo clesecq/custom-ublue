@@ -8,3 +8,7 @@ modules:
   - type: script
     snippets:
       - "sed -i 's/bindsym/bindsym --to-code/' /etc/sway/config"
+  # load keyring with autologin
+  - type: script
+    snippets:
+      - "sed -i '0,/^-auth/s/^-auth/-auth       optional    pam_systemd_loadkey.so\n&/' /etc/pam.d/sddm-autologin"
